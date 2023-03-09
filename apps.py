@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CommandsConfig(AppConfig):
+class MasterloginConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'commands'
+    name = 'Masterlogin'
