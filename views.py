@@ -1,35 +1,36 @@
 from django.shortcuts import render
 
 # Create your views here.
+
 from django.shortcuts import render
 import mysql.connector as sql
-fname=''
-lname=''
-sex=''
-ema=''
-pwod=''
+fn=''
+ln=''
+s=''
+em=''
+pwd=''
 # Create your views here.
-def Mastsignup(request):
-    global fname,lname,sex,ema,pwod
+def Studsignup(request):
+    global fn,ln,s,em,pwd
     if request.method=="POST":
-        s=sql.connect(host="localhost",user="root",passwd="admin",database='website')
-        cursor=s.cursor()
-        c=request.POST
-        for key,value in c.items():
+        m=sql.connect(host="localhost",user="root",passwd="admin",database='website')
+        cursor=m.cursor()
+        d=request.POST
+        for key,value in d.items():
             if key=="first_name":
-                fname=value
+                fn=value
             if key=="last_name":
-                lname=value
+                ln=value
             if key=="sex":
-                sex=value
+                s=value
             if key=="email":
-                ema=value
+                em=value
             if key=="password":
-                pwod=value
+                pwd=value
         
-        e="insert into Mastsign Values('{}','{}','{}','{}','{}')".format(fname,lname,sex,ema,pwod)
-        cursor.execute(e)
-        s.commit()
+        c="insert into studsign Values('{}','{}','{}','{}','{}')".format(fn,ln,s,em,pwd)
+        cursor.execute(c)
+        m.commit()
 
-    return render(request,'Mastersignup.html')
+    return render(request,'Studentsignup.html')
 
